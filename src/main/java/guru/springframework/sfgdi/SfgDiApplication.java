@@ -1,6 +1,9 @@
 package guru.springframework.sfgdi;
 
+import guru.springframework.sfgdi.comtrollers.ConstructorInjectedController;
 import guru.springframework.sfgdi.comtrollers.MyController;
+import guru.springframework.sfgdi.comtrollers.PropertyInjectedController;
+import guru.springframework.sfgdi.comtrollers.SetterInjectedController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -22,6 +25,20 @@ public class SfgDiApplication implements CommandLineRunner {
 
 		String greeting = myController.sayHello();
 		System.out.println(greeting);
+
+		System.out.println("----Property-----");
+		PropertyInjectedController propertyInjectedController = (PropertyInjectedController) ctx.getBean("propertyInjectedController");
+		System.out.println(propertyInjectedController.getGreetingService());
+
+		System.out.println("----Setter----");
+		SetterInjectedController setterInjectedController = (SetterInjectedController) ctx.getBean("setterInjectedController");
+		System.out.println(setterInjectedController.getGreetingService());
+
+		System.out.println("----Constructor----");
+		ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController)ctx.getBean("constructorInjectedController");
+		System.out.println(constructorInjectedController.getGreetingService());
+
+
 	}
 
 	@Override
