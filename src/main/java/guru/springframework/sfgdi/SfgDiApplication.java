@@ -1,9 +1,6 @@
 package guru.springframework.sfgdi;
 
-import guru.springframework.sfgdi.comtrollers.ConstructorInjectedController;
-import guru.springframework.sfgdi.comtrollers.MyController;
-import guru.springframework.sfgdi.comtrollers.PropertyInjectedController;
-import guru.springframework.sfgdi.comtrollers.SetterInjectedController;
+import guru.springframework.sfgdi.comtrollers.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -21,6 +18,12 @@ public class SfgDiApplication implements CommandLineRunner {
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(SfgDiApplication.class, args);
 		//Requires casting since it returns an object of class Object
+
+		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+		System.out.println("-----Profile injected-----");
+		System.out.println(i18nController.sayHello());
+
+
 		MyController myController = (MyController) ctx.getBean("myController");
 
 
